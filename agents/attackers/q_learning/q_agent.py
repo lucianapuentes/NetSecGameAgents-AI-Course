@@ -58,40 +58,71 @@ class QAgent(BaseAgent):
             self._str_to_id[state_str] = len(self._str_to_id)
         return self._str_to_id[state_str]
     
-    def max_action_q(self, observation:Observation) -> Action:
-        state = observation.state
-        actions = generate_valid_actions(state)
-        state_id = self.get_state_id(state)
-        tmp = dict(((state_id, a), self.q_values.get((state_id, a), 0)) for a in actions)
-        return tmp[max(tmp,key=tmp.get)] #return maximum Q_value for a given state (out of available actions)
+    def max_action_q(self, observation:Observation) -> float:
+        """
+        TODO: Implement this method to return the maximum Q-value for the current state.
+
+        This method should:
+        1. Get the current state from the observation
+        2. Generate all valid actions for this state
+        3. Get the state ID
+        4. Find the action with the maximum Q-value
+        5. Return the maximum Q-value (not the action!)
+
+        Hint: You need to look through all valid actions and find the one with highest Q-value.
+        Hint: Use self.q_values.get((state_id, action), 0) to get Q-value with default of 0
+
+        Args:
+            observation: Current observation containing the state
+
+        Returns:
+            float: The maximum Q-value among all valid actions in this state
+        """
+        # TODO: Your code here
+        # Replace this with your implementation
+        return 0.0
    
     def select_action(self, observation:Observation, testing=False) -> tuple:
+        """
+        TODO: Implement epsilon-greedy action selection.
+
+        This method should implement the epsilon-greedy strategy:
+        - During training: With probability epsilon, choose a random action (exploration)
+                          With probability (1-epsilon), choose the best action (exploitation)
+        - During testing: Always choose the best action (no exploration)
+
+        Steps:
+        1. Get the state and generate valid actions
+        2. Get the state_id for this state
+        3. If training and random value < epsilon: choose random action
+        4. Otherwise: choose action with highest Q-value
+        5. Initialize Q-value to 0 if (state_id, action) pair doesn't exist in Q-table
+        6. Return (action, state_id)
+
+        Hint: Use random.uniform(0, 1) to generate random number
+        Hint: Use random.choice(list(actions)) for random action selection
+        Hint: For exploitation, find action with max Q-value from self.q_values
+
+        Args:
+            observation: Current observation containing the state
+            testing: If True, always exploit (no exploration)
+
+        Returns:
+            tuple: (selected_action, state_id)
+        """
         state = observation.state
         actions = generate_valid_actions(state)
         state_id = self.get_state_id(state)
-        
-        # E-greedy play. If the random number is less than the e, then choose random to explore.
-        # But do not do it if we are testing a model. 
-        if random.uniform(0, 1) <= self.current_epsilon and not testing:
-            # We are training
-            # Random choose an ation from the list of actions?
-            action = random.choice(list(actions))
-            if (state_id, action) not in self.q_values:
-                self.q_values[state_id, action] = 0
-            return action, state_id
-        else: 
-            # Here we can be during training outside the e-greede, or during testing
-            # Select the action with highest q_value, or random pick to break the ties
-            # The default initial q-value for a (state, action) pair is 0.
-            initial_q_value = 0
-            tmp = dict(((state_id, action), self.q_values.get((state_id, action), initial_q_value)) for action in actions)
-            ((state_id, action), value) = max(tmp.items(), key=lambda x: (x[1], random.random()))
-            #if max_q_key not in self.q_values:
-            try:
-                self.q_values[state_id, action]
-            except KeyError:
-                self.q_values[state_id, action] = 0
-            return action, state_id
+
+        # TODO: Implement epsilon-greedy action selection
+        # For now, just choose a random action
+        action = random.choice(list(actions))
+
+        # Initialize Q-value if needed
+        if (state_id, action) not in self.q_values:
+            self.q_values[state_id, action] = 0
+
+        return action, state_id
 
     def recompute_reward(self, observation: Observation) -> Observation:
         """
@@ -144,8 +175,24 @@ class QAgent(BaseAgent):
             # Recompute the rewards
             observation = self.recompute_reward(observation)
             if not testing:
-                # If we are training update the Q-table
-                self.q_values[state_id, action] += self.alpha * (observation.reward + self.gamma * self.max_action_q(observation)) - self.q_values[state_id, action]
+                # TODO: Implement the Q-learning update rule
+                #
+                # The Q-learning update formula is:
+                # Q(s,a) = Q(s,a) + alpha * [reward + gamma * max_Q(s',a') - Q(s,a)]
+                #
+                # Where:
+                # - Q(s,a) is the current Q-value for state s and action a
+                # - alpha is the learning rate (self.alpha)
+                # - reward is the reward received (observation.reward)
+                # - gamma is the discount factor (self.gamma)
+                # - max_Q(s',a') is the maximum Q-value for the next state s' (use self.max_action_q())
+                # - s' is the next state (contained in observation)
+                #
+                # Hint: You need to update self.q_values[state_id, action]
+                # Hint: Use self.max_action_q(observation) to get the max Q-value of next state
+
+                # TODO: Your code here to update the Q-table
+                pass
 
             # Check the apm (actions per minute)
             if self._apm_limit:
