@@ -11,9 +11,9 @@ from textual.containers import Vertical, VerticalScroll, Horizontal
 from textual.validation import Function
 from textual import on
 from textual.reactive import reactive
-from NetSecGameAgents.agents.attackers.interactive_tui.assistant import LLMAssistant
+from agents.attackers.interactive_tui.assistant import LLMAssistant
 from AIDojoCoordinator.game_components import Network, IP, ActionType, Action, GameState, Observation, AgentStatus
-from NetSecGameAgents.agents.base_agent import BaseAgent
+from agents.base_agent import BaseAgent
 log_filename = os.path.dirname(os.path.abspath(__file__)) + "/interactive_tui_agent.log"
 logging.basicConfig(
     filename=log_filename,

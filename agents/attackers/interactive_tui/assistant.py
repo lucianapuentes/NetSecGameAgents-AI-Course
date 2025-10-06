@@ -10,7 +10,7 @@ from tenacity import retry, stop_after_attempt
 
 
 from AIDojoCoordinator.game_components import ActionType, Observation
-from NetSecGameAgents.agents.llm_utils import (
+from agents.llm_utils import (
     create_action_from_response,
     create_status_from_state,
 )
