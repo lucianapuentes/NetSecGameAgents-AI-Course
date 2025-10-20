@@ -1,0 +1,136 @@
+16:33:04 QAgent INFO Agent created
+16:33:04 QAgent INFO Loading the previous model in file /home/emiliano/Documentos/Facultad/3er anio/Segundo Semestre/Inteligencia Artificial 1/Github IA/NetSecGameAgents-AI-Course/q_agent_marl.experiment.pickle
+16:33:05 QAgent INFO Successfully loading file /home/emiliano/Documentos/Facultad/3er anio/Segundo Semestre/Inteligencia Artificial 1/Github IA/NetSecGameAgents-AI-Course/q_agent_marl.experiment.pickle
+16:33:05 QAgent INFO Registering agent as Attacker
+16:33:05 QAgent INFO 	Registration successful! {'message': 'Welcome QAgent, registred as Attacker', 'max_steps': 100, 'goal_description': 'Exfiltrate data from Samba server to remote C&C server.', 'actions': ['ActionType.ScanNetwork', 'ActionType.FindServices', 'ActionType.FindData', 'ActionType.ExploitService', 'ActionType.ExfiltrateData', 'ActionType.BlockIP', 'ActionType.JoinGame', 'ActionType.QuitGame', 'ActionType.ResetGame'], 'configuration_hash': '9ded95bd6132a29fbc9d01918241e7f0574b0b6912445b77e9eae348b467ccf5'}
+16:33:07 QAgent INFO Using commits. NetSecEnv: 84f180a0d756f5bfa1813fb7968dcadd961697f7
+. Agents: 84f180a0d756f5bfa1813fb7968dcadd961697f7
+
+16:33:07 QAgent WARNING Environment config file not found: ./env/netsecenv_conf.yaml
+16:33:07 QAgent INFO Epsilon Start: 0.9
+16:33:07 QAgent INFO Epsilon End: 0.1
+16:33:07 QAgent INFO Epsilon Max Episodes: 8000
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 1: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 2: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 3: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 4: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 5: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 6: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 7: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 8: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 9: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.2.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 213.47.23.195, 'source_host': 213.47.23.195}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.2.2, 'data': Data(owner='system', id='logfile', size=70, type='log')}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ScanNetwork|{'target_network': 192.168.1.0/24, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.2.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindServices|{'target_host': 192.168.1.2, 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExploitService|{'target_host': 192.168.1.2, 'target_service': Service(name='ms-wbt-server', type='passive', version='10.0.19041', is_local=False), 'source_host': 192.168.2.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.FindData|{'target_host': 192.168.1.2, 'source_host': 192.168.1.2}>
+16:33:07 QAgent INFO Action selected:Action <ActionType.ExfiltrateData|{'target_host': 213.47.23.195, 'source_host': 192.168.1.2, 'data': Data(owner='User1', id='DataFromServer1', size=0, type='')}>
+16:33:07 QAgent ERROR Testing episode 10: Steps=10. Reward 1000. States in Q_table = 62145
+16:33:07 QAgent INFO Final model performance after 10 episodes.
+            Wins=10,
+            Detections=0,
+            winrate=100.000%,
+            detection_rate=0.000%,
+            average_returns=1000.000 +- 0.000,
+            average_episode_steps=10.000 +- 0.000,
+            average_win_steps=10.000 +- 0.000,
+            average_detected_steps=nan +- nan
+            average_max_steps_steps=nan +- nan,
+            epsilon=0.9
+            
+16:33:07 QAgent ERROR Terminating interaction
+16:33:07 QAgent INFO Socket closed
