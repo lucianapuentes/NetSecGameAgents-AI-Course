@@ -14,8 +14,8 @@ import time
 from os import path, makedirs
 # with the path fixed, we can import now
 from AIDojoCoordinator.game_components import Action, Observation, GameState, AgentStatus
-from NetSecGameAgents.agents.base_agent import BaseAgent
-from NetSecGameAgents.agents.agent_utils import generate_valid_actions, state_as_ordered_string
+from ...base_agent import BaseAgent
+from ...agent_utils import generate_valid_actions, state_as_ordered_string
 
 class QAgent(BaseAgent):
 
@@ -78,9 +78,30 @@ class QAgent(BaseAgent):
         Returns:
             float: The maximum Q-value among all valid actions in this state
         """
-        # TODO: Your code here
-        # Replace this with your implementation
-        return 0.0
+        # 1. Obtener el estado actual de la observación
+        state = observation.state
+        # 2. Generar todas las acciones válidas para este estado
+        actions = generate_valid_actions(state)
+        # 3. Obtener el ID del estado
+        state_id = self.get_state_id(state)
+
+        # Si no hay acciones válidas, no hay valor Q que devolver.
+        if not actions:
+            return 0.0
+
+        # 4. Encontrar la acción con el valor Q máximo
+        # Inicializamos con un valor muy bajo para asegurarnos que cualquier valor Q sea mayor
+        max_q_value = -np.inf 
+        for action in actions:
+            # 5. Usamos self.q_values.get() con un valor por defecto de 0
+            # para manejar pares (estado, acción) que no hemos visto antes.
+            q_value = self.q_values.get((state_id, action), 0.0)
+            if q_value > max_q_value:
+                max_q_value = q_value
+        
+        # Si max_q_value nunca se actualizó (por ejemplo, todas las Q son 0),
+        # devolvemos 0.0, ya que es el valor por defecto.
+        return max_q_value if max_q_value != -np.inf else 0.0
    
     def select_action(self, observation:Observation, testing=False) -> tuple:
         """
@@ -110,18 +131,43 @@ class QAgent(BaseAgent):
         Returns:
             tuple: (selected_action, state_id)
         """
+        # 1. Obtener el estado y generar acciones válidas
         state = observation.state
         actions = generate_valid_actions(state)
+        # 2. Obtener el state_id para este estado
         state_id = self.get_state_id(state)
+        
+        # Si no hay acciones, devolvemos una acción aleatoria de una lista vacía
+        # lo que causará un error, pero es un caso que no debería ocurrir en este entorno.
+        if not actions:
+            return random.choice(list(actions)), state_id
 
-        # TODO: Implement epsilon-greedy action selection
-        # For now, just choose a random action
-        action = random.choice(list(actions))
+        # Lógica Epsilon-Greedy
+        # Generamos un número aleatorio para decidir entre explorar o explotar
+        if not testing and random.uniform(0, 1) < self.current_epsilon:
+            # 3. Exploración: Elegimos una acción aleatoria
+            action = random.choice(list(actions))
+        else:
+            # 4. Explotación: Elegimos la mejor acción (la que tiene el mayor valor Q)
+            max_q_value = -np.inf
+            best_action = None
+            
+            # Mezclamos las acciones para desempatar de forma aleatoria si varias tienen el mismo valor Q máximo.
+            shuffled_actions = list(actions)
+            random.shuffle(shuffled_actions)
 
-        # Initialize Q-value if needed
+            for act in shuffled_actions:
+                q_value = self.q_values.get((state_id, act), 0.0)
+                if q_value > max_q_value:
+                    max_q_value = q_value
+                    best_action = act
+            action = best_action
+
+        # 5. Inicializar el valor Q a 0 si el par (state_id, action) no existe
         if (state_id, action) not in self.q_values:
-            self.q_values[state_id, action] = 0
+            self.q_values[state_id, action] = 0.0
 
+        # 6. Devolver la acción seleccionada y el state_id
         return action, state_id
 
     def recompute_reward(self, observation: Observation) -> Observation:
@@ -175,24 +221,21 @@ class QAgent(BaseAgent):
             # Recompute the rewards
             observation = self.recompute_reward(observation)
             if not testing:
-                # TODO: Implement the Q-learning update rule
-                #
-                # The Q-learning update formula is:
+                # Implementación de la regla de actualización de Q-learning
                 # Q(s,a) = Q(s,a) + alpha * [reward + gamma * max_Q(s',a') - Q(s,a)]
-                #
-                # Where:
-                # - Q(s,a) is the current Q-value for state s and action a
-                # - alpha is the learning rate (self.alpha)
-                # - reward is the reward received (observation.reward)
-                # - gamma is the discount factor (self.gamma)
-                # - max_Q(s',a') is the maximum Q-value for the next state s' (use self.max_action_q())
-                # - s' is the next state (contained in observation)
-                #
-                # Hint: You need to update self.q_values[state_id, action]
-                # Hint: Use self.max_action_q(observation) to get the max Q-value of next state
-
-                # TODO: Your code here to update the Q-table
-                pass
+                
+                # Obtener el valor Q antiguo para el par (estado, acción) actual.
+                old_value = self.q_values.get((state_id, action), 0.0)
+                
+                # Calcular el valor Q máximo para el siguiente estado (s').
+                next_max = self.max_action_q(observation)
+                
+                # Calcular el nuevo valor Q usando la fórmula.
+                # observation.reward es la recompensa 'r' recibida.
+                new_value = old_value + self.alpha * (observation.reward + self.gamma * next_max - old_value)
+                
+                # Actualizar la tabla Q con el nuevo valor.
+                self.q_values[state_id, action] = new_value
 
             # Check the apm (actions per minute)
             if self._apm_limit:
